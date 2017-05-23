@@ -1,3 +1,7 @@
+function updateOutput() {
+	$("iframe").contents().find("html").html("<html><head><style type='text/css'>" + $("#cssPanel").val() + "</style></head><body>" + $("#htmlPanel").val() + "</body></html>");
+}
+
 $(".toggleButton").hover(
 	function() {
 	$(this).addClass("highlightedButton");
@@ -27,9 +31,9 @@ $(".panel").height($(window).height() - $("#header").height() - 15);
 $(".panel").width(($(window).width() / 2) - 10);
 
 // update output when html code is entered
-$("iframe").contents().find("html").html($("#htmlPanel").val());
+updateOutput();
 
+// creates an inline html page full html file in iframe content 
 $("textarea").on("change keyup paste", function() {
-	$("iframe").contents().find("html").html("<html><head><style type='text/css'>" + $("#cssPanel").val() + "</style></head><body>" + $("#htmlPanel").val() + "</body></html>");
-
+	updateOutput();
 	});
