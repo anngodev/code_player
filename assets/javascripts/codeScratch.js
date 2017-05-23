@@ -1,5 +1,9 @@
 function updateOutput() {
 	$("iframe").contents().find("html").html("<html><head><style type='text/css'>" + $("#cssPanel").val() + "</style></head><body>" + $("#htmlPanel").val() + "</body></html>");
+
+	// excute js within the iframe
+	document.getElementById("outputPanel").contentWindow.eval($("#jsPanel").val());
+
 }
 
 $(".toggleButton").hover(
