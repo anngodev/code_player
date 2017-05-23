@@ -9,7 +9,18 @@ $(".toggleButton").click(function() {
 	$(this).toggleClass("active");
 
 	$(this).removeClass("highlightedButton");
+
+	var panelId = $(this).attr("id") + "Panel";
+
+	// toggles the button clicked to hide or display
+	$("#" + panelId).toggleClass("hidden");
+
+	var numberOfActivePanels = 4 - $(".hidden").length;
+
+	$(".panel").width(($(window).width() / numberOfActivePanels) - 10);
+
 	});
+
 
 $(".panel").height($(window).height() - $("#header").height() - 15);
 
