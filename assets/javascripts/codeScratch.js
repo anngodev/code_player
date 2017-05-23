@@ -14,3 +14,10 @@ $(".toggleButton").click(function() {
 $(".panel").height($(window).height() - $("#header").height() - 15);
 
 $(".panel").width(($(window).width() / 2) - 10);
+
+// update output when html code is entered
+$("iframe").contents().find("html").html($("#htmlPanel").val());
+
+$("textarea").on("change keyup paste", function() {
+	$("iframe").contents().find("html").html($("#htmlPanel").val());
+});
